@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>광고 선호도 조사</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      min-height: 100vh;
+      min-width: 100vw;
+      background: url('https://pplx-res.cloudinary.com/image/upload/v1751510516/user_uploads/71721570/a58a6982-3203-4ff1-b478-96d7644bacd4/1000097896.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: '맑은 고딕', Arial, sans-serif;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+    .top-notice {
+      width: 92vw;
+      max-width: 1100px;
+      margin: 4vh auto 0 auto;
+      text-align: center;
+      font-size: 2.3em;
+      font-weight: bold;
+      color: #fff;
+      line-height: 1.4;
+      text-shadow:
+        -3px -3px 0 #111,
+         3px -3px 0 #111,
+        -3px  3px 0 #111,
+         3px  3px 0 #111,
+         0px  3px 0 #111,
+         3px  0px 0 #111,
+         0px -3px 0 #111,
+        -3px  0px 0 #111;
+      letter-spacing: 1px;
+      z-index: 2;
+      position: relative;
+      word-break: keep-all;
+      background: rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 16px 0 10px 0;
+    }
+    .input-area {
+      width: 92vw;
+      max-width: 700px;
+      margin: 5vh auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+    }
+    .input-label {
+      font-size: 2em;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 18px;
+      text-shadow:
+        -2px -2px 0 #111,
+         2px -2px 0 #111,
+        -2px  2px 0 #111,
+         2px  2px 0 #111;
+      letter-spacing: 1px;
+    }
+    .input-box {
+      width: 350px;
+      max-width: 90vw;
+      padding: 18px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0,0,0,0.18);
+      border-radius: 12px;
+      margin-bottom: 28px;
+    }
+    .input-box input[type="text"] {
+      width: 220px;
+      padding: 14px 18px;
+      font-size: 1.5em;
+      border: 2.5px solid #fff;
+      border-radius: 8px;
+      color: #fff;
+      background: rgba(0,0,0,0.35);
+      outline: none;
+      margin-right: 12px;
+      box-shadow: 1px 1px 6px #1118;
+      transition: border 0.2s, background 0.2s;
+    }
+    .input-box input[type="text"]::placeholder {
+      color: #eee;
+      opacity: 1;
+      font-size: 1em;
+    }
+    .input-box input[type="text"]:focus {
+      border: 2.5px solid #ff9800;
+      background: rgba(0,0,0,0.45);
+    }
+    .input-box button {
+      padding: 14px 38px;
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #fff;
+      background: #d90000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 1px 1px 6px #1118;
+      letter-spacing: 1px;
+      transition: background 0.2s;
+    }
+    .input-box button:hover {
+      background: #b00000;
+    }
+    @media (max-width: 600px) {
+      .top-notice {
+        font-size: 1.15em;
+        margin-top: 2vh;
+        padding: 10px 0 6px 0;
+      }
+      .input-label {
+        font-size: 1.1em;
+        margin-bottom: 12px;
+      }
+      .input-box {
+        width: 98vw;
+        padding: 10px 0;
+        margin-bottom: 18px;
+      }
+      .input-box input[type="text"] {
+        width: 48vw;
+        font-size: 1em;
+      }
+      .input-box button {
+        padding: 10px 18px;
+        font-size: 1em;
+      }
+      .input-area {
+        margin-top: 2vh;
+      }
+    }
+  </style>
+  <script>
+    function goToSurvey() {
+      const num = document.getElementById('studentNum').value.trim();
+      const lastTwo = num.slice(-2);
+      const lastNum = parseInt(lastTwo, 10);
+      if (isNaN(lastNum)) {
+        alert('학번을 올바르게 입력하세요.');
+        return;
+      }
+      // 홀수: 간접광고, 짝수: 직접광고
+      if (lastNum % 2 === 1) {
+        window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScIxPERGtDmxFM_d2R68Gm21cViCd5ftDBetzMtQ9L_aoMgxQ/viewform?usp=dialog';
+      } else {
+        window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScldtmlfYuTk_d45jV1NtuaSiTs0JKE1S6kWRMyWK29FzhLjQ/viewform?usp=dialog';
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="top-notice">
+    *해당 설문지는 동영상을 시청 후, 동영상에 나온 제품에 대한 선호도를 평가하는 설문지입니다.*<br>
+    *입력한 학번은 단순한 홀짝 번호 구분과 간식제공 목적으로 사용됩니다.*<br>
+    *설문지 응답기간이 끝난 다음날, 설문지에 참여한 학생들의 각 반에 본인이 선택한 항목의 간식을 두고 가겠습니다.(1응답1간식(낱개))*
+  </div>
+  <div class="input-area">
+    <div class="input-label">학번 입력</div>
+    <div class="input-box">
+      <input type="text" id="studentNum" placeholder="예:)10101">
+      <button onclick="goToSurvey()">설문 시작</button>
+    </div>
+  </div>
+</body>
+</html>
