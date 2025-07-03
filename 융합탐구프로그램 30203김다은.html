@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>간식 제공 설문</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      min-width: 100vw;
+      background: url('https://pplx-res.cloudinary.com/image/upload/v1751510516/user_uploads/71721570/a58a6982-3203-4ff1-b478-96d7644bacd4/1000097896.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: '맑은 고딕', Arial, sans-serif;
+      position: relative;
+      overflow-x: hidden;
+    }
+    /* 안내문: 오른쪽 중간보다 약간 아래, 1/4 크기 */
+    .notice-box {
+      position: absolute;
+      right: 7%;
+      top: 55%;
+      transform: translateY(-50%);
+      width: 25vw;
+      min-width: 220px;
+      max-width: 400px;
+      z-index: 2;
+    }
+    .notice-text {
+      font-size: 1.15em;
+      line-height: 1.7;
+      color: #fff;
+      font-weight: bold;
+      text-shadow:
+        -2px -2px 0 #111,
+         2px -2px 0 #111,
+        -2px  2px 0 #111,
+         2px  2px 0 #111,
+         0px  2px 0 #111,
+         2px  0px 0 #111,
+         0px -2px 0 #111,
+        -2px  0px 0 #111;
+      background: none;
+      padding: 0;
+      margin: 0;
+      border: none;
+    }
+    /* 입력폼: 왼쪽 맨 위, 배경 없이 */
+    .input-area {
+      position: absolute;
+      top: 4%;
+      left: 5%;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .input-area label {
+      font-size: 1.12em;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 7px;
+      text-shadow: 
+        -2px -2px 0 #111,
+         2px -2px 0 #111,
+        -2px  2px 0 #111,
+         2px  2px 0 #111,
+         0px  2px 0 #111,
+         2px  0px 0 #111,
+         0px -2px 0 #111,
+        -2px  0px 0 #111;
+    }
+    .input-area input[type="text"] {
+      width: 120px;
+      padding: 7px 10px;
+      font-size: 1em;
+      border: 2px solid #fff;
+      border-radius: 6px;
+      color: #fff;
+      background: rgba(0,0,0,0.25);
+      outline: none;
+      margin-bottom: 12px;
+      box-shadow: 1px 1px 4px #1118;
+      transition: border 0.2s, background 0.2s;
+    }
+    .input-area input[type="text"]::placeholder {
+      color: #eee;
+      opacity: 1;
+    }
+    .input-area input[type="text"]:focus {
+      border: 2px solid #ff9800;
+      background: rgba(0,0,0,0.35);
+    }
+    .input-area button {
+      padding: 7px 24px;
+      font-size: 1.05em;
+      font-weight: bold;
+      color: #fff;
+      background: #d90000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 1px 1px 4px #1118;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+    .input-area button:hover {
+      background: #b00000;
+    }
+    @media (max-width: 700px) {
+      .notice-box {
+        position: static;
+        width: 92vw;
+        max-width: 98vw;
+        margin: 18px auto;
+        top: unset;
+        right: unset;
+        transform: none;
+      }
+      .input-area {
+        position: static;
+        margin: 18px auto 0 18px;
+      }
+    }
+  </style>
+  <script>
+    function goToSurvey() {
+      const num = document.getElementById('studentNum').value.trim();
+      const lastTwo = num.slice(-2);
+      const lastNum = parseInt(lastTwo, 10);
+      if (isNaN(lastNum)) {
+        alert('학번을 올바르게 입력하세요.');
+        return;
+      }
+      // 홀수: 간접광고, 짝수: 직접광고
+      if (lastNum % 2 === 1) {
+        window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScIxPERGtDmxFM_d2R68Gm21cViCd5ftDBetzMtQ9L_aoMgxQ/viewform?usp=dialog';
+      } else {
+        window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScldtmlfYuTk_d45jV1NtuaSiTs0JKE1S6kWRMyWK29FzhLjQ/viewform?usp=dialog';
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="input-area">
+    <label for="studentNum">학번 입력</label>
+    <input type="text" id="studentNum" placeholder="예:)10101">
+    <button onclick="goToSurvey()">설문 시작</button>
+  </div>
+  <div class="notice-box">
+    <div class="notice-text">
+      *해당 설문지는 동영상을 시청 후, 동영상에 나온 제품에 대한 선호도를 평가하는 설문지입니다.*<br><br>
+      *입력한 학번은 단순한 홀짝 번호 구분과 간식제공 목적으로 사용됩니다.*<br><br>
+      *설문지 응답기간이 끝난 다음날, 설문지에 참여한 학생들의 각 반에 본인이 선택한 항목의 간식을 두고 가겠습니다.(1응답1간식(낱개))*
+    </div>
+  </div>
+</body>
+</html>
